@@ -1,0 +1,1 @@
+alert("initial setting")
