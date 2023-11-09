@@ -1,38 +1,44 @@
-const dpTime = function () {
-  const now = new Date()
-  var hours = now.getHours()
-  var minutes = now.getMinutes()
-  var seconds = now.getSeconds()
-  var ampm = ''
+document.addEventListener('DOMContentLoaded', function () {
+  let timeElement = document.getElementById('time');
+  let dateElement = document.getElementById('date');
 
-  if (hours > 12) {
-    hours -= 12
-    ampm = '오후'
-  } else {
-    ampm = '오전'
+  function dpTime() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    let ampm = '오전';
+
+    if (hours > 12) {
+      hours -= 12;
+      ampm = '오후';
+    }
+
+    const formattedMinutes = (minutes < 10) ? '0' + minutes : minutes;
+    const formattedSeconds = (seconds < 10) ? '0' + seconds : seconds;
+
+    timeElement.innerHTML = ampm + " " + hours + ":" + formattedMinutes + ":" + formattedSeconds;
   }
 
-  if (minutes < 10) {
-    minutes = '0' + minutes
+  function dpDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const date = now.getDate();
+    const dayIndex = now.getDay();
+    const week = ['일', '월', '화', '수', '목', '금', '토'];
+    const day = week[dayIndex];
+
+    dateElement.innerHTML = year + "년 " + month + "월 " + date + "일 " + day + "요일";
   }
 
-  if (seconds < 10) {
-    seconds = '0' + seconds
-  }
+  // 초기 실행
+  dpTime();
+  dpDate();
 
-  document.getElementById('time').innerHTML = ampm + " " + hours + ":" + minutes + ":" + seconds
-}
-setInterval(dpTime, 1000)  
-
-const dpDate = function () {
-  const now = new Date()
-  var year = now.getFullYear();
-  var month = now.getMonth() + 1;
-  var date = now.getDate();
-  var dayIndex  = now.getDay();
-  var week = ['일', '월', '화', '수', '목', '금', '토'];
-  var day = week[dayIndex];
-
-  document.getElementById('date').innerHTML = year + "년 " + month + "월 " + date + "일 " + day + "요일" 
-}
-setInterval(dpDate, 1000);
+  // 1초마다 업데이트
+  setInterval(function () {
+    dpTime();
+    dpDate();
+  }, 1000);
+});
