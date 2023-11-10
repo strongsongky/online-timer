@@ -1,44 +1,33 @@
 document.addEventListener('DOMContentLoaded', function () {
-  let timeElement = document.getElementById('time');
-  let dateElement = document.getElementById('date');
+  let contentSection = document.getElementById('content-section');
 
-  function dpTime() {
-    const now = new Date();
-    let hours = now.getHours();
-    const minutes = now.getMinutes();
-    const seconds = now.getSeconds();
-    let ampm = '오전';
-
-    if (hours > 12) {
-      hours -= 12;
-      ampm = '오후';
-    }
-
-    const formattedMinutes = (minutes < 10) ? '0' + minutes : minutes;
-    const formattedSeconds = (seconds < 10) ? '0' + seconds : seconds;
-
-    timeElement.innerHTML = ampm + " " + hours + ":" + formattedMinutes + ":" + formattedSeconds;
+  function loadClockSection() {
+    fetch('clock/clock.html')
+      .then(response => response.text())
+      .then(html => {
+        contentSection.innerHTML = html;
+        const scriptElement = document.createElement('script');
+        scriptElement.src = 'clock/clock.js';
+        document.head.appendChild(scriptElement);
+      })
+      .catch(error => console.error('Error fetching clock.html:', error));
   }
 
-  function dpDate() {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = now.getMonth() + 1;
-    const date = now.getDate();
-    const dayIndex = now.getDay();
-    const week = ['일', '월', '화', '수', '목', '금', '토'];
-    const day = week[dayIndex];
-
-    dateElement.innerHTML = year + "년 " + month + "월 " + date + "일 " + day + "요일";
+  function loadStopwatchSection() {
+    
   }
 
-  // 초기 실행
-  dpTime();
-  dpDate();
+  function loadAlarmSection() {
+    
+  }
 
-  // 1초마다 업데이트
-  setInterval(function () {
-    dpTime();
-    dpDate();
-  }, 1000);
+  loadClockSection();
+
+  const clockTab = document.getElementById("clock-tab");
+  const stopwatchTab = document.getElementById("stopwatch-tab");
+  const alarmTab = document.getElementById("alarm-tab");
+
+  clockTab.addEventListener("click", loadClockSection);
+  stopwatchTab.addEventListener("click", loadStopwatchSection);
+  alarmTab.addEventListener("click", loadAlarmSection);
 });
