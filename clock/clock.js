@@ -1,4 +1,12 @@
+console.log("ddd1");
+
+if(document.readyState == "loading")
+{
+  console.log("이미 완료");
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+  console.log("ddd2");
   let timeElement = document.getElementById('time');
   let dateElement = document.getElementById('date');
   

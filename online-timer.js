@@ -2,13 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
   let contentSection = document.getElementById('content-section');
 
   function loadClockSection() {
-    fetch('clock/clock.html')
+    fetch('./clock/clock.html')
       .then(response => response.text())
       .then(html => {
+        
         contentSection.innerHTML = html;
-        const scriptElement = document.createElement('script');
-        scriptElement.src = 'clock/clock.js';
-        document.head.appendChild(scriptElement);
+        console.log(contentSection.innerHTML );
       })
       .catch(error => console.error('Error fetching clock.html:', error));
   }
