@@ -1,12 +1,7 @@
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
 section {
   padding-top: 60px;
   padding-left: 70px;
-  background-color: rgb(252, 5, 5);
+  background-color: rgb(117, 117, 117);
   color: orange;
   height: 87%;
 }

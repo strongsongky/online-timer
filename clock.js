@@ -1,3 +1,4 @@
+console.log("ddd1");
 document.addEventListener('DOMContentLoaded', function () {
   console.log("ddd2");
   let timeElement = document.getElementById('time');
