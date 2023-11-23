@@ -13,7 +13,6 @@ var recordList = document.getElementById('Records');
 startBtn.addEventListener('click', function() {
   if (this.innerText == 'RECORD' && milisec) {
     var li = document.createElement('li');
-    li.style.color = "#fff";
     li.innerText = min + ' : ' + sec + ' : ' + milisec;
 
     if (!recordList.firstChild) {

@@ -32,14 +32,14 @@ document.addEventListener('DOMContentLoaded', function () {
       contentSection.innerHTML = `
         <section id="stopwatch-section">
           <main>
-            <div>
+            <div id="time-section">
               <span id="Min">00</span>
               <span>:</span>
               <span id="Sec">00</span>
               <span>.</span>
               <span id="Milisec">00</span>
             </div>
-            <div>
+            <div id="button-section">
               <button type="button" id="StartBtn">START</button>
               <button type="button" id="StopBtn">STOP</button>
             </div>
