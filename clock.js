@@ -1,5 +1,10 @@
 console.log("ddd1");
-document.addEventListener('DOMContentLoaded', function () {
+
+var DOMReady = function(callback) { 
+  document.readyState === "interactive" || document.readyState === "complete" ? callback() : document.addEventListener("DOMContentLoaded", callback);
+};
+
+DOMReady(function () {	
   console.log("ddd2");
   let timeElement = document.getElementById('time');
   let dateElement = document.getElementById('date');
@@ -9,11 +14,11 @@ document.addEventListener('DOMContentLoaded', function () {
     let hours = now.getHours();
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
-    let ampm = '오전';
+    let ampm = 'AM';
 
     if (hours > 12) {
       hours -= 12;
-      ampm = '오후';
+      ampm = 'PM';
     }
 
     const formattedMinutes = (minutes < 10) ? '0' + minutes : minutes;

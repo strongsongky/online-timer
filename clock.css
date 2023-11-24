@@ -10,11 +10,11 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 250px;
+  padding-top: 170px;
 }
 
 #time {
-  font-size: 60px;
+  font-size: 70px;
 }
 
 #date {

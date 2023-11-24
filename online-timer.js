@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function loadStopwatchSection() {
-      console.log("Stopwatch script loaded1");
       contentSection.innerHTML = `
         <section id="stopwatch-section">
           <main>
@@ -36,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
               <span id="Min">00</span>
               <span>:</span>
               <span id="Sec">00</span>
-              <span>.</span>
+              <span>:</span>
               <span id="Milisec">00</span>
             </div>
             <div id="button-section">
@@ -54,13 +53,9 @@ document.addEventListener('DOMContentLoaded', function () {
       styleElement.rel = 'stylesheet';
       styleElement.href = './stopwatch.css';
       document.head.appendChild(styleElement);
-      console.log("Stopwatch script loaded2");
   
       const scriptElement = document.createElement('script');
       scriptElement.src = './stopwatch.js'; 
-      scriptElement.onload = function () {
-        console.log("Stopwatch script loaded3");
-      };
       document.body.appendChild(scriptElement);
   }
   
