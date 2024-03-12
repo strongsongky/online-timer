@@ -15,9 +15,14 @@ main {
 
 #time {
   font-size: 70px;
+  width: 380px;
+  white-space: nowrap;
 }
 
 #date {
   margin-top: 10px;
   font-size: 17px;
+  width: 200px; /* 날짜 요소의 너비를 고정합니다. */
+  text-align: center; /* 텍스트를 가운데 정렬합니다. */
+  padding-right: 50px;
 }

@@ -1,8 +1,7 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const contentSection = document.getElementById('content-section');
+document.addEventListener("DOMContentLoaded", function () {
+  const contentSection = document.getElementById("content-section");
 
   function loadClockSection() {
-    console.log("1");
     contentSection.innerHTML = `
       <section id="clock-section">
         <main>
@@ -12,23 +11,18 @@ document.addEventListener('DOMContentLoaded', function () {
       </section>
     `;
 
-    console.log("2");
-    const styleElement = document.createElement('link');
-    styleElement.rel = 'stylesheet';
-    styleElement.href = './clock.css';
+    const styleElement = document.createElement("link");
+    styleElement.rel = "stylesheet";
+    styleElement.href = "./clock.css";
     document.head.appendChild(styleElement);
-    console.log("Clock section loaded1");
-    
-    const scriptElement = document.createElement('script');
-    scriptElement.src = './clock.js';
-    scriptElement.onload = function () {
-      console.log("Clock script loaded2");
-    };
+
+    const scriptElement = document.createElement("script");
+    scriptElement.src = "./clock.js";
     document.body.appendChild(scriptElement);
   }
 
   function loadStopwatchSection() {
-      contentSection.innerHTML = `
+    contentSection.innerHTML = `
         <section id="stopwatch-section">
           <main>
             <div id="time-section">
@@ -48,20 +42,18 @@ document.addEventListener('DOMContentLoaded', function () {
           </main>
         </section>
       `;
-  
-      const styleElement = document.createElement('link');
-      styleElement.rel = 'stylesheet';
-      styleElement.href = './stopwatch.css';
-      document.head.appendChild(styleElement);
-  
-      const scriptElement = document.createElement('script');
-      scriptElement.src = './stopwatch.js'; 
-      document.body.appendChild(scriptElement);
+
+    const styleElement = document.createElement("link");
+    styleElement.rel = "stylesheet";
+    styleElement.href = "./stopwatch.css";
+    document.head.appendChild(styleElement);
+
+    const scriptElement = document.createElement("script");
+    scriptElement.src = "./stopwatch.js";
+    document.body.appendChild(scriptElement);
   }
-  
-  function loadAlarmSection() {
-    
-  }
+
+  function loadAlarmSection() {}
 
   loadClockSection();
 

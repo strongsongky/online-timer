@@ -16,11 +16,13 @@ main {
 #time-section {
   font-size: 70px;
   padding-bottom: 10px;
+  padding-right: 50px;
 }
 
 #button-section {
   display: flex;
   justify-content: space-between;
+  padding-right: 50px;
 }
 
 #StartBtn {
@@ -29,7 +31,7 @@ main {
   font-size: 12px;
   margin-right: 15px;
   border-radius: 5px;
-  border-style:none
+  border-style: none;
 }
 
 #StopBtn {
@@ -37,7 +39,7 @@ main {
   height: 25px;
   font-size: 12px;
   border-radius: 5px;
-  border-style:none;
+  border-style: none;
 }
 
 #Records {
