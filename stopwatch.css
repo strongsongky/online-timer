@@ -14,15 +14,17 @@ main {
 }
 
 #time-section {
-  font-size: 70px;
+  font-size: 100px;
+  width: 550px;
   padding-bottom: 10px;
   padding-right: 50px;
+  white-space: nowrap;
 }
 
 #button-section {
   display: flex;
   justify-content: space-between;
-  padding-right: 50px;
+  padding-right: 60px;
 }
 
 #StartBtn {

@@ -53,9 +53,32 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.appendChild(scriptElement);
   }
 
-  function loadAlarmSection() {}
+  function loadAlarmSection() {
+    contentSection.innerHTML = `
+        <section id="alarm-section">
+          <main>
+            <div id="time"></div>
+            <h2>알람 설정</h2>
+              <div>
+                <label for="alarmTime">알람 시간:</label>
+                <input type="time" id="alarmTime">
+              </div>
+              <button id="setAlarmButton">알람 설정</button>
+          </main>
+        </section>
+    `;
 
-  loadClockSection();
+    const styleElement = document.createElement("link");
+    styleElement.rel = "stylesheet";
+    styleElement.href = "./alarm.css";
+    document.head.appendChild(styleElement);
+
+    const scriptElement = document.createElement("script");
+    scriptElement.src = "./alarm.js";
+    document.body.appendChild(scriptElement);
+  }
+
+  loadAlarmSection();
 
   const clockTab = document.getElementById("clock-tab");
   const stopwatchTab = document.getElementById("stopwatch-tab");
