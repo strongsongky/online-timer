@@ -17,14 +17,14 @@ main {
   font-size: 100px;
   width: 550px;
   padding-bottom: 10px;
-  padding-right: 50px;
+  padding-right: 30px;
   white-space: nowrap;
 }
 
 #button-section {
   display: flex;
   justify-content: space-between;
-  padding-right: 60px;
+  padding-right: 65px;
 }
 
 #StartBtn {
@@ -49,5 +49,5 @@ main {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 8;
   overflow: auto;
-  padding-right: 35px;
+  padding-right: 90px;
 }

@@ -24,7 +24,7 @@ main {
 #date {
   margin-top: 10px;
   font-size: 30px;
-  width: 300px; /* 날짜 요소의 너비를 고정합니다. */
-  text-align: center; /* 텍스트를 가운데 정렬합니다. */
+  width: 320px; 
+  text-align: center;
   padding-right: 65px;
 }

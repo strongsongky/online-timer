@@ -58,12 +58,12 @@ document.addEventListener("DOMContentLoaded", function () {
         <section id="alarm-section">
           <main>
             <div id="time"></div>
-            <h2>알람 설정</h2>
-              <div>
-                <label for="alarmTime">알람 시간:</label>
+            <div id="alarmname">알람 설정</div>
+              <div id="setAlarm">
+                <label for="alarmTime">알람 시간 :</label>
                 <input type="time" id="alarmTime">
               </div>
-              <button id="setAlarmButton">알람 설정</button>
+              <button id="setAlarmButton">알람 시작</button>
           </main>
         </section>
     `;
