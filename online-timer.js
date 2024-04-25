@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
         <section id="alarm-section">
           <main>
             <div id="time"></div>
-            <div id="alarmname">알람 설정</div>
               <div id="setAlarm">
                 <label for="alarmTime">알람 시간 :</label>
                 <input type="time" id="alarmTime">
