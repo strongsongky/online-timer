@@ -92,12 +92,22 @@ function handleSetAlarm() {
 
   // 알람 시간까지 남은 시간 계산 함수
   function formatTimeDifference(timeDifference) {
-    const hoursLeft = Math.floor(timeDifference / 60 / 60);
-    const minutesLeft = Math.floor((timeDifference / 60) % 60);
-    const secondsLeft = Math.floor(timeDifference % 60);
-    return `${hoursLeft < 10 ? "0" : ""}${hoursLeft}:${
-      minutesLeft < 10 ? "0" : ""
-    }${minutesLeft}:${secondsLeft < 10 ? "0" : ""}${secondsLeft}`;
+    // 시간, 분, 초 계산
+    let hoursLeft = Math.floor(timeDifference / 3600);
+    let minutesLeft = Math.floor((timeDifference % 3600) / 60);
+    let secondsLeft = timeDifference % 60;
+
+    // 시간이 음수인 경우 다음 날로 계산합니다.
+    if (hoursLeft < 0) {
+      hoursLeft += 24;
+    }
+
+    // 시, 분, 초가 한 자리 수인 경우 앞에 0을 붙여줍니다.
+    hoursLeft = hoursLeft < 10 ? "0" + hoursLeft : hoursLeft;
+    minutesLeft = minutesLeft < 10 ? "0" + minutesLeft : minutesLeft;
+    secondsLeft = secondsLeft < 10 ? "0" + secondsLeft : secondsLeft;
+
+    return `${hoursLeft}:${minutesLeft}:${secondsLeft}`;
   }
 
   // 알람 취소 함수
@@ -110,6 +120,7 @@ function handleSetAlarm() {
     const [hours, minutes] = alarmTime.split(":").map(Number);
     let ampm = hours >= 12 ? "오후" : "오전";
     let formattedHours = hours % 12 || 12;
-    return `${ampm} ${formattedHours}:${minutes}`;
+    let formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+    return `${ampm} ${formattedHours}:${formattedMinutes}`;
   }
 }
