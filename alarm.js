@@ -101,7 +101,7 @@ function handleSetAlarm() {
   }
 
   function cancelAlarm() {
-    clearInterval(interval); // 타이머 정지
+    clearInterval(interval);
     alarmContainer.replaceWith(setAlarmDiv);
     setAlarmButton.style.display = "block";
   }
