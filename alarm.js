@@ -36,7 +36,7 @@ DOMReady(function () {
   setAlarmButton.addEventListener("click", handleSetAlarm);
 });
 
-let interval;
+let interval; // 전역 변수로 선언
 
 function handleSetAlarm() {
   const alarmTimeInput = document.getElementById("alarmTime");
@@ -52,11 +52,14 @@ function handleSetAlarm() {
   const currentMinutes = now.getMinutes();
   const currentTime = currentHours * 3600 + currentMinutes * 60 + now.getSeconds();
 
+  // 알람 시간 파싱하기
   const [hours, minutes] = alarmTime.split(":").map(Number);
   let alarmTimeInSeconds = hours * 3600 + minutes * 60;
 
+  // 현재 시간과 알람 시간의 차이 계산
   let timeDifference = alarmTimeInSeconds - currentTime;
   if (timeDifference < 0) {
+    // 만약 설정한 알람 시간이 현재 시간보다 이전이면 다음날로 설정
     timeDifference += 24 * 3600;
   }
 
@@ -82,9 +85,10 @@ function handleSetAlarm() {
   const setAlarmDiv = document.getElementById("setAlarm");
   setAlarmDiv.replaceWith(alarmContainer);
 
-  updateRemainingTime(); 
-  interval = setInterval(updateRemainingTime, 1000);
+  updateRemainingTime(); // 초기 호출
+  interval = setInterval(updateRemainingTime, 1000); // 1초마다 갱신
 
+  // 알람 시간까지 남은 시간 계산 함수
   function updateRemainingTime() {
     const hoursLeft = Math.floor(timeDifference / 3600);
     const minutesLeft = Math.floor((timeDifference % 3600) / 60);
@@ -93,15 +97,15 @@ function handleSetAlarm() {
     const timeRemainingDisplay = document.getElementById("timeRemaining");
     timeRemainingDisplay.textContent = `남은 시간: ${hoursLeft.toString().padStart(2, "0")}:${minutesLeft.toString().padStart(2, "0")}:${secondsLeft.toString().padStart(2, "0")}`;
 
-    timeDifference--;
+    timeDifference--; // 1초 감소
     if (timeDifference < 0) {
-      clearInterval(interval); 
-      timeRemainingDisplay.textContent = "시간 종료"; 
+      clearInterval(interval); // 타이머 정지
+      timeRemainingDisplay.textContent = "시간 종료"; // 시간 종료 메시지 표시
     }
   }
 
   function cancelAlarm() {
-    clearInterval(interval);
+    clearInterval(interval); // 타이머 정지
     alarmContainer.replaceWith(setAlarmDiv);
     setAlarmButton.style.display = "block";
   }
