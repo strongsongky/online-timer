@@ -36,8 +36,6 @@ DOMReady(function () {
   setAlarmButton.addEventListener("click", handleSetAlarm);
 });
 
-let interval; // 전역 변수로 선언
-
 function handleSetAlarm() {
   const alarmTimeInput = document.getElementById("alarmTime");
   const alarmTime = alarmTimeInput.value;
@@ -50,16 +48,14 @@ function handleSetAlarm() {
   const now = new Date();
   const currentHours = now.getHours();
   const currentMinutes = now.getMinutes();
-  const currentTime = currentHours * 3600 + currentMinutes * 60 + now.getSeconds();
+  const currentTime =
+    currentHours * 3600 + currentMinutes * 60 + now.getSeconds();
 
-  // 알람 시간 파싱하기
   const [hours, minutes] = alarmTime.split(":").map(Number);
   let alarmTimeInSeconds = hours * 3600 + minutes * 60;
 
-  // 현재 시간과 알람 시간의 차이 계산
   let timeDifference = alarmTimeInSeconds - currentTime;
   if (timeDifference < 0) {
-    // 만약 설정한 알람 시간이 현재 시간보다 이전이면 다음날로 설정
     timeDifference += 24 * 3600;
   }
 
@@ -67,7 +63,7 @@ function handleSetAlarm() {
   alarmContainer.id = "alarmContainer";
 
   const alarmTimeDisplay = document.createElement("div");
-  alarmTimeDisplay.textContent = `알람 시간: ${alarmTime}`;
+  alarmTimeDisplay.textContent = `알람 시간: ${formatAlarmTime(alarmTime)}`;
   alarmContainer.appendChild(alarmTimeDisplay);
 
   const timeRemainingDisplay = document.createElement("div");
@@ -85,27 +81,46 @@ function handleSetAlarm() {
   const setAlarmDiv = document.getElementById("setAlarm");
   setAlarmDiv.replaceWith(alarmContainer);
 
-  updateRemainingTime(); // 초기 호출
-  interval = setInterval(updateRemainingTime, 1000); // 1초마다 갱신
+  updateRemainingTime();
+  interval = setInterval(updateRemainingTime, 1000);
 
-  // 알람 시간까지 남은 시간 계산 함수
+  function formatAlarmTime(alarmTime) {
+    const [hours, minutes] = alarmTime.split(":").map(Number);
+    let ampm = "오전";
+    let formattedHours = hours;
+    if (hours >= 12) {
+      ampm = "오후";
+      formattedHours = hours > 12 ? hours - 12 : hours;
+    }
+    const formattedMinutes = minutes.toString().padStart(2, "0");
+    return `${ampm} ${formattedHours}:${formattedMinutes}`;
+  }
+  // 알람 시간 설정 초 00 0
   function updateRemainingTime() {
     const hoursLeft = Math.floor(timeDifference / 3600);
     const minutesLeft = Math.floor((timeDifference % 3600) / 60);
     const secondsLeft = timeDifference % 60;
 
     const timeRemainingDisplay = document.getElementById("timeRemaining");
-    timeRemainingDisplay.textContent = `남은 시간: ${hoursLeft.toString().padStart(2, "0")}:${minutesLeft.toString().padStart(2, "0")}:${secondsLeft.toString().padStart(2, "0")}`;
 
-    timeDifference--; // 1초 감소
+    timeRemainingDisplay.textContent = `남은 시간: ${hoursLeft
+      .toString()
+      .padStart(2, "0")}:${minutesLeft
+      .toString()
+      .padStart(2, "0")}:${secondsLeft.toString().padStart(2, "0")}`;
+
+    timeDifference--;
     if (timeDifference < 0) {
-      clearInterval(interval); // 타이머 정지
-      timeRemainingDisplay.textContent = "시간 종료"; // 시간 종료 메시지 표시
+      clearInterval(interval);
+      timeRemainingDisplay.textContent = "시간 종료";
+      if (confirm("시간이 다 되었습니다.")) {
+        location.reload();
+      }
     }
   }
 
   function cancelAlarm() {
-    clearInterval(interval); // 타이머 정지
+    clearInterval(interval);
     alarmContainer.replaceWith(setAlarmDiv);
     setAlarmButton.style.display = "block";
   }

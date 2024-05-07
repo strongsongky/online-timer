@@ -46,3 +46,14 @@ main {
 #setAlarmButton:hover {
   cursor: pointer;
 }
+
+#alarmContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  padding-right: 65px;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  text-align: center;
+}
