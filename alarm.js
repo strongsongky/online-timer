@@ -63,7 +63,8 @@ function handleSetAlarm() {
   alarmContainer.id = "alarmContainer";
 
   const alarmTimeDisplay = document.createElement("div");
-  alarmTimeDisplay.textContent = `알람 시간: ${formatAlarmTime(alarmTime)}`;
+  alarmTimeDisplay.id = "showAlarmset";
+  alarmTimeDisplay.textContent = `알람 시간 : ${formatAlarmTime(alarmTime)}`;
   alarmContainer.appendChild(alarmTimeDisplay);
 
   const timeRemainingDisplay = document.createElement("div");
@@ -72,6 +73,7 @@ function handleSetAlarm() {
 
   const cancelButton = document.createElement("button");
   cancelButton.textContent = "취소";
+  cancelButton.id = "cancelButton";
   cancelButton.addEventListener("click", cancelAlarm);
   alarmContainer.appendChild(cancelButton);
 
@@ -93,9 +95,9 @@ function handleSetAlarm() {
       formattedHours = hours > 12 ? hours - 12 : hours;
     }
     const formattedMinutes = minutes.toString().padStart(2, "0");
-    return `${ampm} ${formattedHours}:${formattedMinutes}`;
+    return `${ampm} ${formattedHours} : ${formattedMinutes}`;
   }
-  // 알람 시간 설정 초 00 0
+
   function updateRemainingTime() {
     const hoursLeft = Math.floor(timeDifference / 3600);
     const minutesLeft = Math.floor((timeDifference % 3600) / 60);
@@ -103,11 +105,11 @@ function handleSetAlarm() {
 
     const timeRemainingDisplay = document.getElementById("timeRemaining");
 
-    timeRemainingDisplay.textContent = `남은 시간: ${hoursLeft
+    timeRemainingDisplay.textContent = `남은 시간 : ${hoursLeft
       .toString()
-      .padStart(2, "0")}:${minutesLeft
+      .padStart(2, "0")} : ${minutesLeft
       .toString()
-      .padStart(2, "0")}:${secondsLeft.toString().padStart(2, "0")}`;
+      .padStart(2, "0")} : ${secondsLeft.toString().padStart(2, "0")}`;
 
     timeDifference--;
     if (timeDifference < 0) {
