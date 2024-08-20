@@ -24,7 +24,7 @@ main {
 #button-section {
   display: flex;
   justify-content: space-between;
-  padding-right: 65px;
+  padding-right: 40px;
 }
 
 #StartBtn {

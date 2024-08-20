@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const styleElement = document.createElement("link");
     styleElement.rel = "stylesheet";
-    styleElement.href = "./clock.css";
+    styleElement.href = "./assets/clock.css";
     document.head.appendChild(styleElement);
 
     const scriptElement = document.createElement("script");
-    scriptElement.src = "./clock.js";
+    scriptElement.src = "./scripts/clock.js";
     document.body.appendChild(scriptElement);
   }
 
@@ -45,11 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const styleElement = document.createElement("link");
     styleElement.rel = "stylesheet";
-    styleElement.href = "./stopwatch.css";
+    styleElement.href = "./assets/stopwatch.css";
     document.head.appendChild(styleElement);
 
     const scriptElement = document.createElement("script");
-    scriptElement.src = "./stopwatch.js";
+    scriptElement.src = "./scripts/stopwatch.js";
     document.body.appendChild(scriptElement);
   }
 
@@ -69,15 +69,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const styleElement = document.createElement("link");
     styleElement.rel = "stylesheet";
-    styleElement.href = "./alarm.css";
+    styleElement.href = "./assets/alarm.css";
     document.head.appendChild(styleElement);
 
     const scriptElement = document.createElement("script");
-    scriptElement.src = "./alarm.js";
+    scriptElement.src = "./scripts/alarm.js";
     document.body.appendChild(scriptElement);
   }
 
-  loadAlarmSection();
+  loadClockSection();
 
   const clockTab = document.getElementById("clock-tab");
   const stopwatchTab = document.getElementById("stopwatch-tab");
